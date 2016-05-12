@@ -280,8 +280,11 @@ class SWEContentViewClient extends ContentViewClient {
                     @Override
                     public void onRequestPermissionsResult(String[] permissions,
                         int[] grantResults) {
-                        if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                            mWebView.loadUrl(url);
+                        if (grantResults.length > 0) {
+                            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                                mWebView.loadUrl(url);
+                            }
+                        }
                     }
                 };
                 windowAndroid.requestPermissions(
